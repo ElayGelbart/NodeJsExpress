@@ -30,7 +30,7 @@
 
 <body>
   <h1>Pokadex 4U</h1>
-  <div class="form-floating mb-3">
+  <div id="theform" class="form-floating mb-3">
     <input type="text" class="form-control" id="floatingInputUserName" placeholder="Elay Gelbart">
     <label for="floatingInputUserName">User Name</label>
   </div>
@@ -41,6 +41,8 @@
       Please enter valid Pokemon/ID
     </div>
   </div>
+  </div>
+  <div style="display:none;" class="alert alert-primary" role="alert">
   </div>
   <button type="button" id="searchPokeBtn" class="btn btn-outline-success mx-5 mb-1">Search Pokemon</button>
   <div class="container">
@@ -57,6 +59,9 @@
       <div class="col">
         Image
       </div>
+      <div class="col">
+        Pokadex
+      </div>
     </div>
     <div class="row">
       <div id="_pokeName" class="col">
@@ -69,6 +74,9 @@
 
       </div>
       <div class="col" id="_pokeIMG">
+
+      </div>
+      <div class="col" id="_pokeCOR">
 
       </div>
     </div>
