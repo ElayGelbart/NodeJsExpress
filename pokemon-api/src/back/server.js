@@ -34,7 +34,15 @@ app.put(`/pokemon/catch/:id`, async function (req, res) {
 });
 
 
-app.delete(`/pokemon/release/:id`, function (req, res) {
-  res.send(req.params);
+app.delete(`/pokemon/release/:id`, async function (req, res) {
+  const pokeObj = await P.getPokemonByName(req.params.id);
+  const newUserPokeDir = `${__dirname}/../../users/${req.body.username}/${pokeObj.id}.json`;
+  try {
+    fs.accessSync(newUserPokeDir);
+    fs.unlinkSync(newUserPokeDir);
+    res.send('Pokemon Deleted')
+  } catch (error) {
+    res.send('You dont have this pokemon');
+  }
 });
 
