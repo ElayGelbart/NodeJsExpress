@@ -23,8 +23,14 @@ app.get(`/pokemon/get/:id`, async function (req, res) {
 
 app.put(`/pokemon/catch/:id`, async function (req, res) {
   const pokeObj = await P.getPokemonByName(req.params.id);
-  console.log(fs.accessSync(`${__dirname}/../../users/${req.body.username}/${pokeObj.id}.json`))
-  res.send(req.params);
+  const newUserPokeDir = `${__dirname}/../../users/${req.body.username}/${pokeObj.id}.json`;
+  try {
+    fs.accessSync(newUserPokeDir);
+    res.send('There is A pokemon To That User')
+  } catch (error) {
+    fs.writeFileSync(newUserPokeDir, JSON.stringify(pokeObj))
+    res.send('Created New');
+  }
 });
 
 
