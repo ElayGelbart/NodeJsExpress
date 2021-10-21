@@ -20,7 +20,6 @@ const catchPokemonToUsername = async () => {
 const realesePokemonFromUsername = async () => {
   const UserNameValueOBJSON = { username: document.getElementById("floatingInputUserName").value };
   const pokemonName = document.getElementById("selectedPokemonName").innerText.toLowerCase();
-  console.log(pokemonName);
   const response = await axios.delete(`http://localhost:8080/pokemon/release/${pokemonName}`, { data: UserNameValueOBJSON });
   addAlert(response.data)
 }
@@ -44,7 +43,7 @@ const postTypeInfoByClick = async (typeName) => {
   const responseobj = await response.json()
   let stringToTypeTable = ``;
   for (let i = 0; i < responseobj.pokemon.length; i++) {
-    stringToTypeTable += ` <tr><th scope="row">${i}</th><td class="link-danger" onclick="getPokemonFromName('${responseobj.pokemon[i].pokemon.name}')">${responseobj.pokemon[i].pokemon.name}</td></tr>`
+    stringToTypeTable += ` <tr><th scope="row">${i + 1}</th><td class="link-danger" onclick="getPokemonFromName('${responseobj.pokemon[i].pokemon.name}')">${responseobj.pokemon[i].pokemon.name}</td></tr>`
   }
   document.getElementById("typebodyTable").innerHTML = stringToTypeTable;
 }
@@ -59,6 +58,16 @@ document.getElementById("searchPokeBtn").addEventListener("click", function () {
   getPokemonFromName(pokemonNameValue);
 });
 
+document.getElementById("showPokadexBtn").addEventListener("click", async () => {
+  const UserNameValue = document.getElementById("floatingInputUserName").value;
+  const response = await axios.get(`http://localhost:8080/pokemon/${UserNameValue}`);
+  let stringToPokadexTable = ``;
+  for (let i = 0; i < response.data.length; i++) {
+    const currentPokemon = JSON.parse(response.data[i]);
+    stringToPokadexTable += ` <tr><th scope="row">${i + 1}</th><td class="link-danger" onclick="getPokemonFromName('${currentPokemon.name}')">${currentPokemon.name}</td></tr>`
+  }
+  document.getElementById("typebodyTable").innerHTML = stringToPokadexTable;
+})
 
 document.getElementById("_pokeIMG").addEventListener("mouseover", () => {
   const imgsrc = document.getElementById("pokeIMG").getAttribute("src");

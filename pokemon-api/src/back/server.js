@@ -1,6 +1,5 @@
 const express = require('express');
 const fs = require('fs');
-const bodyParser = require('body-parser');
 const app = express();
 const port = 8080;
 const Pokedex = require('pokedex-promise-v2');
@@ -22,8 +21,8 @@ app.use((req, res, next) => { // chrome only work with this headers !
 
 
 // route our app
-app.get(`/pokemon/`, async function (req, res) {
-  const newUserPokeDir = `${__dirname}/../../users/${req.body.username}/`;
+app.get(`/pokemon/:username`, async function (req, res) {
+  const newUserPokeDir = `${__dirname}/../../users/${req.params.username}/`;
   try {
     const fileArray = fs.readdirSync(newUserPokeDir);
     let multipokeObj = [];
