@@ -16,6 +16,21 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-
 
 
 // route our app
+app.get(`/pokemon/`, async function (req, res) {
+  const newUserPokeDir = `${__dirname}/../../users/${req.body.username}/`;
+  try {
+    const fileArray = fs.readdirSync(newUserPokeDir);
+    let multipokeObj = [];
+    for (let value of fileArray) {
+      value = Number(value.replace('.json', ''));
+      multipokeObj.push(JSON.stringify(await P.getPokemonByName(value)))
+    }
+    res.send(multipokeObj); // return an array of stringify object of each pokemon 
+  } catch (error) {
+    res.send('isnt that user')
+  }
+});
+
 app.get(`/pokemon/get/:id`, async function (req, res) {
   const pokeObj = await P.getPokemonByName(req.params.id);
   res.send(pokeObj);
