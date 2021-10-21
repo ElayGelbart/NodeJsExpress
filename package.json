@@ -1,0 +1,27 @@
+{
+  "name": "nodejsexpress",
+  "version": "1.0.0",
+  "description": "weekend assignment",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./pokemon-api/src/back/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElayGelbart/NodeJsExpress.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElayGelbart/NodeJsExpress/issues"
+  },
+  "homepage": "https://github.com/ElayGelbart/NodeJsExpress#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pokedex-promise-v2": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
