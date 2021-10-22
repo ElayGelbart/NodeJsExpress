@@ -49,15 +49,15 @@ app.get(`/pokemon/:username`, async function (req, res) {
 
 app.put(`/pokemon/catch/:id`, async function (req, res) {
   const pokeObj = await P.getPokemonByName(req.params.id);
-  const newUserPokeDir = `${__dirname}/../../users/${req.body.username}/${pokeObj.id}.json`;
+  const newUserPokeDir = `${__dirname}/../../users/${req.headers.username}/${pokeObj.id}.json`;
   console.log(req.headers.username);
   try {
     fs.accessSync(newUserPokeDir);
     errorHandler.cantRealeseOrCatch(res);
     res.send('You have this Pokemon')
   } catch (error) {
-    if (!helpFunc.checkDir(`${__dirname}/../../users/${req.body.username}`)) {
-      fs.mkdirSync(`${__dirname}/../../users/${req.body.username}`);
+    if (!helpFunc.checkDir(`${__dirname}/../../users/${req.headers.username}`)) {
+      fs.mkdirSync(`${__dirname}/../../users/${req.headers.username}`);
     }
     fs.writeFileSync(newUserPokeDir, JSON.stringify(pokeObj))
     res.send('Pokemon added to Pokedex');
