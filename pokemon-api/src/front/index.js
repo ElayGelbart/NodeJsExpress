@@ -1,6 +1,7 @@
 const getPokemonFromName = async (pokemonName) => {
   try {
     const response = await fetch(`http://localhost:8080/pokemon/get/${pokemonName}`);
+    console.log(response);
     const responseobj = await response.json()
     postPokemonInfo(responseobj);
     document.getElementsByClassName("invalid-feedback")[0].style.display = "none";
@@ -11,16 +12,24 @@ const getPokemonFromName = async (pokemonName) => {
 }
 
 const catchPokemonToUsername = async () => {
-  const UserNameValueOBJSON = { username: `${document.getElementById("floatingInputUserName").value}` };
+  const UserNameValue = document.getElementById("floatingInputUserName").value;
   const pokemonName = document.getElementById("selectedPokemonName").innerText.toLowerCase();
-  const response = await axios.put(`http://localhost:8080/pokemon/catch/${pokemonName}`, UserNameValueOBJSON);
-  addAlert(response.data)
+  const response = await axios.put(`http://localhost:8080/pokemon/catch/${pokemonName}`, {
+    header: {
+      username: UserNameValue
+    }
+  });
+  addAlert(response.data);
 }
 
 const realesePokemonFromUsername = async () => {
-  const UserNameValueOBJSON = { username: document.getElementById("floatingInputUserName").value };
+  const UserNameValue = document.getElementById("floatingInputUserName").value;
   const pokemonName = document.getElementById("selectedPokemonName").innerText.toLowerCase();
-  const response = await axios.delete(`http://localhost:8080/pokemon/release/${pokemonName}`, { data: UserNameValueOBJSON });
+  const response = await axios.delete(`http://localhost:8080/pokemon/release/${pokemonName}`, {
+    header: {
+      username: UserNameValue
+    }
+  });
   addAlert(response.data)
 }
 
@@ -60,7 +69,11 @@ document.getElementById("searchPokeBtn").addEventListener("click", function () {
 
 document.getElementById("showPokadexBtn").addEventListener("click", async () => {
   const UserNameValue = document.getElementById("floatingInputUserName").value;
-  const response = await axios.get(`http://localhost:8080/pokemon/${UserNameValue}`);
+  const response = await axios.get(`http://localhost:8080/pokemon/${UserNameValue}`, {
+    header: {
+      username: UserNameValue
+    }
+  });
   let stringToPokadexTable = ``;
   for (let i = 0; i < response.data.length; i++) {
     const currentPokemon = JSON.parse(response.data[i]);
