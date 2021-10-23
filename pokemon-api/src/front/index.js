@@ -1,3 +1,5 @@
+import html from "./index.html";
+
 const getPokemonFromName = async (pokemonName) => {
   const UserNameValue = document.getElementById("floatingInputUserName").value;
   console.log(UserNameValue);
