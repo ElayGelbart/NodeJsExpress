@@ -1,11 +1,13 @@
-function isntPokemon(res) {
-  res.status(404);
-  res.send();
+function errorHandler(err, req, res, next) {
+  if (err.status) {
+    console.log('in error')
+    res.status(err.status);
+    res.send();
+  }
+  else {
+    res.status(500);
+    res.send()
+  }
 }
 
-function cantRealeseOrCatch(res) {
-  res.status(403);
-}
-
-module.exports.isntPokemon = isntPokemon;
-module.exports.cantRealeseOrCatch = cantRealeseOrCatch;
+module.exports = errorHandler;

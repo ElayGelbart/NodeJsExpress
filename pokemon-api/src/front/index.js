@@ -1,12 +1,17 @@
 const getPokemonFromName = async (pokemonName) => {
+  const UserNameValue = document.getElementById("floatingInputUserName").value;
+  console.log(UserNameValue);
   try {
-    const response = await fetch(`http://localhost:8080/pokemon/get/${pokemonName}`);
-    console.log(response);
-    const responseobj = await response.json()
-    postPokemonInfo(responseobj);
+    const response = await axios.get(`http://localhost:8080/pokemon/get/${pokemonName}`, {
+      headers: {
+        username: UserNameValue,
+      }
+    });;
+    postPokemonInfo(response.data);
     document.getElementsByClassName("invalid-feedback")[0].style.display = "none";
   }
   catch (error) {
+    console.log('catch');
     document.getElementsByClassName("invalid-feedback")[0].style.display = "block";
   }
 }
@@ -14,23 +19,32 @@ const getPokemonFromName = async (pokemonName) => {
 const catchPokemonToUsername = async () => {
   const UserNameValue = document.getElementById("floatingInputUserName").value;
   const pokemonName = document.getElementById("selectedPokemonName").innerText.toLowerCase();
-  const response = await axios.put(`http://localhost:8080/pokemon/catch/${pokemonName}`, {
-    header: {
-      username: UserNameValue
-    }
-  });
-  addAlert(response.data);
+  try {
+    const response = await axios.put(`http://localhost:8080/pokemon/catch/${pokemonName}`, JSON.stringify({}), {
+      headers: {
+        username: UserNameValue
+      },
+    });
+    addAlert(response.data);
+  } catch (err) {
+    addAlert("already Had This Pokemon");
+  }
 }
 
 const realesePokemonFromUsername = async () => {
   const UserNameValue = document.getElementById("floatingInputUserName").value;
   const pokemonName = document.getElementById("selectedPokemonName").innerText.toLowerCase();
-  const response = await axios.delete(`http://localhost:8080/pokemon/release/${pokemonName}`, {
-    header: {
-      username: UserNameValue
-    }
-  });
-  addAlert(response.data)
+  try {
+    const response = await axios.delete(`http://localhost:8080/pokemon/release/${pokemonName}`, {
+      headers: {
+        username: UserNameValue
+      },
+    });
+    addAlert(response.data);
+  }
+  catch (err) {
+    addAlert("Pokemon Not Found");
+  }
 }
 
 const postPokemonInfo = (pokeInfoFromAPI) => {
@@ -70,7 +84,7 @@ document.getElementById("searchPokeBtn").addEventListener("click", function () {
 document.getElementById("showPokadexBtn").addEventListener("click", async () => {
   const UserNameValue = document.getElementById("floatingInputUserName").value;
   const response = await axios.get(`http://localhost:8080/pokemon/${UserNameValue}`, {
-    header: {
+    headers: {
       username: UserNameValue
     }
   });
@@ -92,4 +106,4 @@ document.getElementById("_pokeIMG").addEventListener("mouseout", () => {
   const imgsrc = document.getElementById("pokeIMG").getAttribute("src");
   const newimgsrc = imgsrc.replace('pokemon/back/', 'pokemon/');
   document.getElementById("pokeIMG").setAttribute("src", `${newimgsrc}`);
-})
+});
