@@ -37,10 +37,9 @@ router.get(`/pokemon/:username`, async function (req, res) {
 
 router.put(`/pokemon/catch/:id`, async function (req, res, next) {
   const pokeObj = await P.getPokemonByName(req.params.id);
-  console.log(req.headers.username);
   const newUserPokeDir = `${__dirname}/../../../users/${req.headers.username}/${pokeObj.id}.json`;
   try {
-    console.log(fs.accessSync(newUserPokeDir));
+
     next({ status: 403 });
     return;
   } catch (error) {

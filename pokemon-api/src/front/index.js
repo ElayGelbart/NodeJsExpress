@@ -1,7 +1,6 @@
 import html from "./index.html";
 const getPokemonFromName = async (pokemonName) => {
   const UserNameValue = document.getElementById("floatingInputUserName").value;
-  console.log(UserNameValue);
   try {
     const response = await axios.get(`http://localhost:8080/pokemon/get/${pokemonName}`, {
       headers: {
@@ -12,7 +11,6 @@ const getPokemonFromName = async (pokemonName) => {
     document.getElementsByClassName("invalid-feedback")[0].style.display = "none";
   }
   catch (error) {
-    console.log('catch');
     document.getElementsByClassName("invalid-feedback")[0].style.display = "block";
   }
 }
