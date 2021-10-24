@@ -1,5 +1,4 @@
 import html from "./index.html";
-
 const getPokemonFromName = async (pokemonName) => {
   const UserNameValue = document.getElementById("floatingInputUserName").value;
   console.log(UserNameValue);
@@ -17,6 +16,7 @@ const getPokemonFromName = async (pokemonName) => {
     document.getElementsByClassName("invalid-feedback")[0].style.display = "block";
   }
 }
+window.getPokemonFromName = getPokemonFromName;
 
 const catchPokemonToUsername = async () => {
   const UserNameValue = document.getElementById("floatingInputUserName").value;
@@ -72,6 +72,7 @@ const postTypeInfoByClick = async (typeName) => {
   }
   document.getElementById("typebodyTable").innerHTML = stringToTypeTable;
 }
+window.postTypeInfoByClick = postTypeInfoByClick;
 
 const addAlert = (msg) => {
   document.getElementsByClassName("alert")[0].style.display = 'block';
