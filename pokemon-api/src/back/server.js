@@ -18,8 +18,7 @@ app.listen(process.env.PORT || 3000,
 
 app.use(express.static(path.join(__dirname, '../dist')))
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, "../dist/index.html"));
-  res.send("hello")
+  res.sendFile(path.resolve('../dist/index.html'))  // res.send("hello")
 });
 app.use(cors());
 app.use('/info', userRoute);
