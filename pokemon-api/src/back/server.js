@@ -3,7 +3,7 @@ const express = require('express');
 var cors = require('cors');
 // routers
 const pokemonRoute = require('./routers/pokemonRouter');
-const userRoute = require('./routers/userRouter')
+const userRoute = require('./routers/userRouter');
 // my files
 const errorHandler = require('./middleware/errorHandler');
 // others
