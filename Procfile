@@ -1,1 +1,1 @@
-web: node ./pokemon-api/src/dist/app.js
+web: node pokemon-api/src/dist/app.js
