@@ -17,10 +17,10 @@ app.listen(process.env.PORT || 3000,
 
 
 app.use(cors());
+app.use('/info', userRoute);
+app.use('/pokemon', pokemonRoute);
 app.use('/', express.static(path.resolve('../dist'))); // serve main path as static dir
 app.get('/', function (req, res) { // serve main path as static file
   res.sendFile(path.resolve('../dist/index.html'))
 });
-app.use('/info', userRoute);
-app.use('/pokemon', pokemonRoute);
 app.use(errorHandler);
