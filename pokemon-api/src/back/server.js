@@ -16,9 +16,9 @@ app.listen(process.env.PORT || 3000,
   () => console.log("Server is running..."));
 
 
-app.use(express.static(path.join(__dirname, '../dist')))
+app.use(express.static(path.join(__dirname, '../../dist')))
 app.get('/', function (req, res) {
-  res.sendFile(path.resolve('../dist/index.html'))  // res.send("hello")
+  res.sendFile(path.resolve('../index.html'))  // res.send("hello")
 });
 app.use(cors());
 app.use('/info', userRoute);
