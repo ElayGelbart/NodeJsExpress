@@ -16,11 +16,12 @@ app.listen(process.env.PORT || 3000,
   () => console.log("Server is running..."));
 
 
+app.use(express.static(path.join(__dirname, '../dist')))
+app.get('/', function (req, res) {
+  res.send("hello")
+  res.sendFile(__dirname + "../dist/index.html");
+});
 app.use(cors());
 app.use('/info', userRoute);
 app.use('/pokemon', pokemonRoute);
-app.use(express.static(path.join(__dirname, '../dist')))
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + "../dist/index.html");
-});
 app.use(errorHandler);
