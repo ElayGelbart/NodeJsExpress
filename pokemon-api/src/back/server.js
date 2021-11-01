@@ -19,5 +19,5 @@ app.listen(process.env.PORT || 3000,
 app.use(cors());
 app.use('/info', userRoute);
 app.use('/pokemon', pokemonRoute);
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../dist/index.html')));
 app.use(errorHandler);
