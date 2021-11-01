@@ -8,7 +8,7 @@ const userRoute = require('./routers/userRouter')
 const errorHandler = require('./middleware/errorHandler');
 // others
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;;
 
 // start the server
 // app.listen(port, function () {
@@ -23,5 +23,5 @@ app.get('/', function (req, res) { // serve main path as static file
 app.use('/info', userRoute);
 // app.use('/', pokemonRoute);
 app.use(errorHandler);
-app.listen(process.env.PORT || 3000,
+app.listen(port,
   () => console.log("Server is running..."));
