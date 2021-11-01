@@ -21,6 +21,6 @@ app.use('/info', userRoute);
 app.use('/pokemon', pokemonRoute);
 app.use(express.static(path.join(__dirname, '../dist')))
 app.get('/', (req, res) => {
-  res.sendFile(path.resolve('../dist/index.html'))
+  res.sendFile(path.join(__dirname, '../dist/index.html'))
 })
 app.use(errorHandler);
