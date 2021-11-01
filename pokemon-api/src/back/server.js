@@ -1,6 +1,7 @@
 // libaries
 const express = require('express');
-var cors = require('cors');
+const cors = require('cors');
+const path = require("path");
 // routers
 const pokemonRoute = require('./routers/pokemonRouter');
 const userRoute = require('./routers/userRouter')
