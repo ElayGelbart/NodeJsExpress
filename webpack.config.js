@@ -5,7 +5,7 @@ const serverConfig = {
   target: 'node',
   entry: "./pokemon-api/src/back/server.js",
   output: {
-    path: path.resolve(__dirname, '/pokemon-api/src/dist/server'),
+    path: path.resolve(__dirname, './pokemon-api/src/dist/server'),
     filename: 'server.node.js',
   },
 };
@@ -14,7 +14,7 @@ const clientConfig = {
   target: 'web',
   entry: "./pokemon-api/src/front/index.js",
   output: {
-    path: path.resolve(__dirname, "/pokemon-api/src/dist"),
+    path: path.resolve(__dirname, "./pokemon-api/src/dist"),
     filename: "app.js",
   },
   plugins: [
