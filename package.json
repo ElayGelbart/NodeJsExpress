@@ -4,6 +4,7 @@
   "description": "weekend assignment",
   "main": "index.js",
   "scripts": {
+    "start": "node ./pokemon-api/src/back/server.js",
     "dev": "nodemon ./pokemon-api/src/dist/server/server.node.js",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
