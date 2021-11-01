@@ -16,12 +16,12 @@ const port = process.env.PORT || 8080;;
 // });
 
 app.use(cors());
-// app.use('/', express.static(path.resolve('../dist'))); // serve main path as static dir
-// app.get('/', function (req, res) { // serve main path as static file
-//   res.sendFile(path.resolve('../dist/index.html'))
-// });
+app.use('/', express.static(path.resolve('../dist'))); // serve main path as static dir
+app.get('/', function (req, res) { // serve main path as static file
+  res.sendFile(path.resolve('../dist/index.html'))
+});
 app.use('/info', userRoute);
-app.use('/', pokemonRoute);
+app.use('/pokemon', pokemonRoute);
 app.use(errorHandler);
 app.listen(port,
   () => console.log("Server is running..."));
