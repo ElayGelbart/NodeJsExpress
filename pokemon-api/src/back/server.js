@@ -16,10 +16,10 @@ app.listen(process.env.PORT || 3000,
 
 
 app.use(express.static(path.join(__dirname, '../../dist')))
-app.get('/', function (req, res) {
-  res.sendFile(path.resolve('../index.html'))  // res.send("hello")
-});
 app.use(cors());
 app.use('/info', userRoute);
 app.use('/pokemon', pokemonRoute);
+app.get('/', function (req, res) {
+  res.sendFile(path.resolve('../index.html'));
+});
 app.use(errorHandler);
