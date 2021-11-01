@@ -1,1 +1,1 @@
-web: node ./pokemon-api/src/back/server.js
+web: node server.js

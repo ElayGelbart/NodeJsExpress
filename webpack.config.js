@@ -1,20 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const serverConfig = {
-  target: 'node',
-  entry: "./pokemon-api/src/back/server.js",
-  output: {
-    path: path.resolve(__dirname, 'dist/server'),
-    filename: 'server.node.js',
-  },
-};
 
 const clientConfig = {
   target: 'web',
   entry: "./pokemon-api/src/front/index.js",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "./pokemon-api/src/dist"),
     filename: "app.js",
   },
   plugins: [
@@ -37,4 +29,4 @@ const clientConfig = {
   }
 };
 
-module.exports = [serverConfig, clientConfig];
+module.exports = [clientConfig];

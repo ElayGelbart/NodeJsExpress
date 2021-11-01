@@ -10,7 +10,7 @@ const router = express.Router()
 router.use(express.json()) // for parsing routerlication/json
 router.use(express.urlencoded({ extended: true })) // for parsing routerlication/x-www-form-urlencoded
 router.use(userHandler)
-router.get(`/pokemon/get/:id`, async function (req, res, next) {
+router.get(`/get/:id`, async function (req, res, next) {
   try {
     const pokeObj = await P.getPokemonByName(req.params.id);
     res.send(pokeObj);
@@ -20,7 +20,7 @@ router.get(`/pokemon/get/:id`, async function (req, res, next) {
 });
 
 // route our router
-router.get(`/pokemon/:username`, async function (req, res) {
+router.get(`/:username`, async function (req, res) {
   const newUserPokeDir = `${__dirname}/../../../users/${req.headers.username}/`;
   try {
     const fileArray = fs.readdirSync(newUserPokeDir);
@@ -35,7 +35,7 @@ router.get(`/pokemon/:username`, async function (req, res) {
   }
 });
 
-router.put(`/pokemon/catch/:id`, async function (req, res, next) {
+router.put(`/catch/:id`, async function (req, res, next) {
   const pokeObj = await P.getPokemonByName(req.params.id);
   const newUserPokeDir = `${__dirname}/../../../users/${req.headers.username}/${pokeObj.id}.json`;
   try {
@@ -52,7 +52,7 @@ router.put(`/pokemon/catch/:id`, async function (req, res, next) {
 });
 
 
-router.delete(`/pokemon/release/:id`, async function (req, res, next) {
+router.delete(`/release/:id`, async function (req, res, next) {
   const pokeObj = await P.getPokemonByName(req.params.id);
   const newUserPokeDir = `${__dirname}/../../../users/${req.headers.username}/${pokeObj.id}.json`;
   try {
