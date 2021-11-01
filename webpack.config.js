@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const serverConfig = {
   target: 'node',
-  entry: "./back/server.js",
+  entry: "./pokemon-api/src/back/server.js",
   output: {
     path: path.resolve(__dirname, 'dist/server'),
     filename: 'server.node.js',
@@ -12,14 +12,14 @@ const serverConfig = {
 
 const clientConfig = {
   target: 'web',
-  entry: "./front/index.js",
+  entry: "./pokemon-api/src/front/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "app.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './front/index.html',
+      template: './pokemon-api/src/front/index.html',
       filename: "./index.html"
     }),
   ],
