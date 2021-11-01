@@ -1,0 +1,35 @@
+{
+  "name": "nodejsexpress",
+  "version": "1.0.0",
+  "description": "weekend assignment",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./dist/server/server.node.js",
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElayGelbart/NodeJsExpress.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElayGelbart/NodeJsExpress/issues"
+  },
+  "homepage": "https://github.com/ElayGelbart/NodeJsExpress#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "css-loader": "^6.4.0",
+    "express": "^4.17.1",
+    "pokedex-promise-v2": "^3.3.2",
+    "style-loader": "^3.3.1"
+  },
+  "devDependencies": {
+    "html-loader": "^3.0.0",
+    "html-webpack-plugin": "^5.4.0",
+    "nodemon": "^2.0.14",
+    "webpack": "^5.59.1",
+    "webpack-cli": "^4.9.1"
+  }
+}
