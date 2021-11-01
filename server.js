@@ -2,10 +2,10 @@
 const express = require('express');
 var cors = require('cors');
 // routers
-const pokemonRoute = require('./routers/pokemonRouter');
-const userRoute = require('./routers/userRouter')
+const pokemonRoute = require('./pokemon-api/src/back/routers/pokemonRouter');
+const userRoute = require('./pokemon-api/src/back/routers/userRouter')
 // my files
-const errorHandler = require('./middleware/errorHandler');
+const errorHandler = require('./pokemon-api/src/back/middleware/errorHandler');
 // others
 const app = express();
 const port = 8080;
