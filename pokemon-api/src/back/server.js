@@ -9,7 +9,6 @@ const userRoute = require('./routers/userRouter')
 const errorHandler = require('./middleware/errorHandler');
 // others
 const app = express();
-const port = 8080;
 
 // start the server
 app.listen(process.env.PORT || 3000,

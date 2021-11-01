@@ -2,7 +2,7 @@ import html from "./index.html";
 const getPokemonFromName = async (pokemonName) => {
   const UserNameValue = document.getElementById("floatingInputUserName").value;
   try {
-    const response = await axios.get(`http://localhost:8080/pokemon/get/${pokemonName}`, {
+    const response = await axios.get(`https://immense-coast-57523.herokuapp.com//pokemon/get/${pokemonName}`, {
       headers: {
         username: UserNameValue,
       }
@@ -20,7 +20,7 @@ const catchPokemonToUsername = async () => {
   const UserNameValue = document.getElementById("floatingInputUserName").value;
   const pokemonName = document.getElementById("selectedPokemonName").innerText.toLowerCase();
   try {
-    const response = await axios.put(`http://localhost:8080/pokemon/catch/${pokemonName}`, JSON.stringify({}), {
+    const response = await axios.put(`https://immense-coast-57523.herokuapp.com//pokemon/catch/${pokemonName}`, JSON.stringify({}), {
       headers: {
         username: UserNameValue
       },
@@ -35,7 +35,7 @@ const realesePokemonFromUsername = async () => {
   const UserNameValue = document.getElementById("floatingInputUserName").value;
   const pokemonName = document.getElementById("selectedPokemonName").innerText.toLowerCase();
   try {
-    const response = await axios.delete(`http://localhost:8080/pokemon/release/${pokemonName}`, {
+    const response = await axios.delete(`https://immense-coast-57523.herokuapp.com//pokemon/release/${pokemonName}`, {
       headers: {
         username: UserNameValue
       },
@@ -84,7 +84,7 @@ document.getElementById("searchPokeBtn").addEventListener("click", function () {
 
 document.getElementById("showPokadexBtn").addEventListener("click", async () => {
   const UserNameValue = document.getElementById("floatingInputUserName").value;
-  const response = await axios.get(`http://localhost:8080/pokemon/${UserNameValue}`, {
+  const response = await axios.get(`https://immense-coast-57523.herokuapp.com//pokemon/${UserNameValue}`, {
     headers: {
       username: UserNameValue
     }
